@@ -14,4 +14,4 @@ Currently, two official plugins are available:
 - In your terminal run the command `npm install --legacy-peer-deps`
 - `npm run dev`
 - Server should be running in http://localhost:5173/
-- You can also view the current working version in our link textbook-sharing-application.vercel.app
+- You can also view the current working version in our link [textbook-sharing-application.vercel.app](https://textbook-sharing-application.vercel.app/)
