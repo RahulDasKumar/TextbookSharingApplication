@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "./components/ui/button"
-
+import { Route,Routes,Link } from "react-router-dom";
+import Login from "./Login";
 
 export default function Navbar(){
     return  (
@@ -11,7 +12,7 @@ export default function Navbar(){
             <section className="w-2/4 h-4/5 m-4 border border-black flex flex-row justify-evenly items-center">
                 <Button>Products</Button>
                 <Button>About us</Button>
-                <Button>Sign in</Button>
+                <Button><Link to="/login">Sign in</Link></Button>
                 <Button>Cart</Button>
             </section>
             </nav>

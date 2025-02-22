@@ -8,17 +8,26 @@ import IntroSection from "./IntroSection";
 import { FeaturedProducts } from "./FeaturedProducts";
 import SocialMedia from "./SocialMedia";
 import AccordionSection from "./AccordionSection";
+import { BrowserRouter } from "react-router-dom";
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import Login from "./Login";
+import HomePage from "./HomePage";
+
+const routeDefinitions = createRoutesFromElements(
+  <Route>
+    <Route path="/" element={<HomePage/>}/>
+    <Route path="/login" element={<Login />} />
+  </Route>
+)
+const route = createBrowserRouter(routeDefinitions)
+
 
 export default function App() {
-  const [date, setDate] = useState(new Date());
 
   return (
     <>
-      <Navbar />
-      <IntroSection />
-      <FeaturedProducts/>
-      <AccordionSection/>
-      <SocialMedia/>
+    <RouterProvider router={route}/>
     </>
+    
   );
 }
