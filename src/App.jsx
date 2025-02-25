@@ -12,11 +12,13 @@ import { BrowserRouter } from "react-router-dom";
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import Login from "./Login";
 import HomePage from "./HomePage";
+import Products from "./Products";
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
     <Route path="/" element={<HomePage/>}/>
     <Route path="/login" element={<Login />} />
+    <Route path="/products" element={<Products />} />
   </Route>
 )
 const route = createBrowserRouter(routeDefinitions)
