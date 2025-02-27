@@ -11,6 +11,18 @@ import {
     TableRow,
   } from "@/components/ui/table"
 
+import {
+Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination"
+  
+  
+
 import Navbar from "./Navbar";
 
 export default function ProductsPage() {
@@ -50,6 +62,24 @@ export default function ProductsPage() {
                     </TableRow>
                 </TableBody>
             </Table>
+
+            <Pagination>
+                <PaginationContent>
+                    <PaginationItem>
+                    <PaginationPrevious href="#" />
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationLink href="#">1</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationEllipsis />
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationNext href="#" />
+                    </PaginationItem>
+                </PaginationContent>
+            </Pagination>
+
         </>
 
     );
