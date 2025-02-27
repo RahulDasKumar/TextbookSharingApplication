@@ -13,7 +13,8 @@ export default function Navbar(){
             <section className="w-2/4 h-4/5 m-4 border border-black flex flex-row justify-evenly items-center">
                 <Button><Link to="/products">Products</Link></Button>
                 <Button>About us</Button>
-                <Button><Link to="/login">Sign in</Link></Button>
+                <Button><Link to="/login">Log In</Link></Button>
+                <Button><Link to="/signup">Sign Up</Link></Button>
                 <Button>Cart</Button>
             </section>
             </nav>

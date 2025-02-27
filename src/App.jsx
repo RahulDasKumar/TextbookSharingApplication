@@ -13,12 +13,14 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import Login from "./Login";
 import HomePage from "./HomePage";
 import Products from "./Products";
+import SignUp from "./SignUp";
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
     <Route path="/" element={<HomePage/>}/>
     <Route path="/login" element={<Login />} />
     <Route path="/products" element={<Products />} />
+    <Route path="/signup" element={<SignUp/>} />
   </Route>
 )
 const route = createBrowserRouter(routeDefinitions)
