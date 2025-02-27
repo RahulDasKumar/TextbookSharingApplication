@@ -61,22 +61,25 @@ export default function ProductsPage() {
                 </TableBody>
             </Table>
 
-            <Pagination>
-                <PaginationContent>
-                    <PaginationItem>
-                    <PaginationPrevious href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                    <PaginationLink href="#">1</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                    <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
-                    <PaginationNext href="#" />
-                    </PaginationItem>
+            <div className="flex flex-col justify-between min-h-screen">
+            <Pagination className="mt-auto">
+                <PaginationContent className="flex justify-center space-x-2">
+                <PaginationItem>
+                    <PaginationPrevious href="#" className="px-4 py-2 bg-gray-200 border rounded">Previous</PaginationPrevious>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationLink href="#" className="px-4 py-2 bg-gray-200 border rounded">1</PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationEllipsis className="px-4 py-2 bg-gray-200 border rounded" />
+                </PaginationItem>
+                <PaginationItem>
+                    <PaginationNext href="#" className="px-4 py-2 bg-gray-200 border rounded">Next</PaginationNext>
+                </PaginationItem>
                 </PaginationContent>
             </Pagination>
+            </div>
+
 
         </>
 
