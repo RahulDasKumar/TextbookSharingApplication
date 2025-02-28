@@ -6,7 +6,7 @@ import Login from "./Login";
 import HomePage from "./HomePage";
 import ProductsPage from "./Products";
 import SignUp from './SignUp';
-import CartPage from './CartPage';
+import CartPage from './Cart';
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
