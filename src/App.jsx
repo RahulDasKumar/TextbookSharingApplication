@@ -6,6 +6,7 @@ import Login from "./Login";
 import HomePage from "./HomePage";
 import ProductsPage from "./Products";
 import SignUp from './SignUp';
+import CartPage from './CartPage';
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
@@ -13,6 +14,7 @@ const routeDefinitions = createRoutesFromElements(
     <Route path="/login" element={<Login />} />
     <Route path="/products" element={<ProductsPage />} />
     <Route path="/signup" element={<SignUp/>} />
+    <Route path="/cart" element={<CartPage/>} />
 
   </Route>
 )

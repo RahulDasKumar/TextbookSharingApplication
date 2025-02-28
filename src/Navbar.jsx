@@ -15,9 +15,9 @@ export default function Navbar(){
                 <Button>About us</Button>
                 <Button><Link to="/login">Login</Link></Button>
                 <Button><Link to="/signup">Sign Up</Link></Button>
-                <Button>Cart</Button>
+                <Button><Link to="/cart">Cart</Link></Button>
             </section>
             </nav>
-    );
+    ); 
 
 }
