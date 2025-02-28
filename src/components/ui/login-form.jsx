@@ -15,9 +15,9 @@ export function LoginForm({ className, ...props }) {
         <div className={cn("flex flex-col gap-6 w-[50vw] place-self-center mt-20", className)} {...props}>
             <Card>
                 <CardHeader>
-                    <CardTitle className="text-2xl">Login</CardTitle>
+                    <CardTitle className="text-2xl">{props.type}</CardTitle>
                     <CardDescription>
-                        Enter your email below to login to your account
+                        Enter your email below to {props.type} to your account
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -45,16 +45,16 @@ export function LoginForm({ className, ...props }) {
                                 <Input id="password" type="password" required />
                             </div>
                             <Button type="submit" className="w-full">
-                                Login
+                                {props.type}
                             </Button>
                             <Button variant="outline" className="w-full">
-                                Login with Google
+                                {props.type} with Google
                             </Button>
                         </div>
                         <div className="mt-4 text-center text-sm">
                             Don&apos;t have an account?{" "}
                             <a href="#" className="underline underline-offset-4">
-                                Sign up
+                                {props.type}
                             </a>
                         </div>
                     </form>

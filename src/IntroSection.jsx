@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "./components/ui/button"
 import image from '/images/Book Cover.png'
 
 export default function IntroSection(){
