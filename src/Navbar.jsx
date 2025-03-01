@@ -14,7 +14,7 @@ export default function Navbar(){
                 <Button><Link to="/products">Products</Link></Button>
                 <Button>About us</Button>
                 <Button><Link to="/login">Login</Link></Button>
-                <Button><Link to="/signup">Sign Up</Link></Button>
+                <Button><Link to="/signup">Git Immersion Sign Up Page</Link></Button>
                 <Button>Cart</Button>
             </section>
             </nav>
