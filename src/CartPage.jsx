@@ -28,35 +28,17 @@ const Books = [
         genre: "Dystopian",
         price: "$17.99",
     },
-    {
-        name: "Moby Dick",
-        paymentStatus: "Available",
-        genre: "Adventure",
-        price: "$9.99",
-    },
-    {
-        name: "Pride and Prejudice",
-        paymentStatus: "Available",
-        genre: "Romance",
-        price: "$19.99",
-    },
-    {
-        name: "The Catcher in the Rye",
-        paymentStatus: "Available",
-        genre: "Coming-of-Age",
-        price: "$29.99",
-    },
-    {
-        name: "Brave New World",
-        paymentStatus: "Available",
-        genre: "Science Fiction",
-        price: "$30",
-    },
+    
 ];
 
-
-
 export function CartPage() {
+    
+    // Calculate the total price
+    const totalPrice = Books.reduce((sum, book) => {
+        const price = parseFloat(book.price.replace('$', ''));
+        return sum + price;
+    }, 0);
+
     return (
         <Table>
             <TableCaption>A list of your recent Books.</TableCaption>
@@ -69,16 +51,20 @@ export function CartPage() {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {Books.map((name) => (
-                    <TableRow key={name.name}>
-                        <TableCell className="font-medium">{name.name}</TableCell>
-                        <TableCell>{name.paymentStatus}</TableCell>
-                        <TableCell>{name.genre}</TableCell>
-                        <TableCell className="text-right">{name.price}</TableCell>
+                {Books.map((book) => (
+                    <TableRow key={book.name}>
+                        <TableCell className="font-medium">{book.name}</TableCell>
+                        <TableCell>{book.paymentStatus}</TableCell>
+                        <TableCell>{book.genre}</TableCell>
+                        <TableCell className="text-right">{book.price}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
             <TableFooter>
+                <TableRow>
+                    <TableCell colSpan="3" className="text-right font-bold">Total</TableCell>
+                    <TableCell className="text-right font-bold">${totalPrice.toFixed(2)}</TableCell>
+                </TableRow>
             </TableFooter>
         </Table>
     )
