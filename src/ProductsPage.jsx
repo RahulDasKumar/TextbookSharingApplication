@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
     Table,
     TableBody,
@@ -7,56 +8,39 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "./components/ui/table"
+} from "./components/ui/table";
 
-const Books = [
-    {
-        name: "The Great Gatsby",
-        paymentStatus: "Available",
-        genre: "Classic Fiction",
-        price: "$5.99",
-    },
-    {
-        name: "To Kill a Mockingbird",
-        paymentStatus: "Out of Stock",
-        genre: "Historical Fiction",
-        price: "$13.99",
-    },
-    {
-        name: "1984",
-        paymentStatus: "Available",
-        genre: "Dystopian",
-        price: "$17.99",
-    },
-    {
-        name: "Moby Dick",
-        paymentStatus: "Available",
-        genre: "Adventure",
-        price: "$9.99",
-    },
-    {
-        name: "Pride and Prejudice",
-        paymentStatus: "Available",
-        genre: "Romance",
-        price: "$19.99",
-    },
-    {
-        name: "The Catcher in the Rye",
-        paymentStatus: "Out of Stock",
-        genre: "Coming-of-Age",
-        price: "$29.99",
-    },
-    {
-        name: "Brave New World",
-        paymentStatus: "Available",
-        genre: "Science Fiction",
-        price: "$30",
-    },
-];
-
-
-
+// The component for displaying products
 export function ProductsPage() {
+    // State to store the fetched products and loading state
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setProducts(data);  // Set the fetched data
+                setLoading(false);   // Set loading to false
+            })
+            .catch(err => {
+                setError('Error fetching posts');
+                setLoading(false);   // Set loading to false in case of error
+            });
+    }, []);
+
+// Show loading message
+if (loading) {
+    return <div>Loading products...</div>;
+}
+
+// Show error message
+if (error) {
+    return <div>{error}</div>;
+}
+
     return (
         <Table>
             <TableCaption>A list of your recent Books.</TableCaption>
@@ -64,22 +48,23 @@ export function ProductsPage() {
                 <TableRow>
                     <TableHead className="w-[100px]">Book Name</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead>Genre</TableHead>
-                    <TableHead className="text-right">Price</TableHead>
+                    <TableHead>Price</TableHead>
+                    <TableHead className="text-right">Stock</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {Books.map((name) => (
-                    <TableRow key={name.name}>
-                        <TableCell className="font-medium">{name.name}</TableCell>
-                        <TableCell>{name.paymentStatus}</TableCell>
-                        <TableCell>{name.genre}</TableCell>
-                        <TableCell className="text-right">{name.price}</TableCell>
+                {products.map((product) => (
+                    <TableRow key={product.id}>  {/* Use 'id' as the key */}
+                        <TableCell className="font-medium">{product.title}</TableCell> {/* Use 'title' */}
+                        <TableCell>{product.body ? "Available" : "Out of Stock"}</TableCell> {/* Dummy check for availability */}
+                        <TableCell>${(Math.random() * 100).toFixed(2)}</TableCell> {/* Assigning a random price */}
+                        <TableCell className="text-right">{Math.floor(Math.random() * 100)}</TableCell> {/* Assigning random stock */}
                     </TableRow>
                 ))}
             </TableBody>
             <TableFooter>
+                
             </TableFooter>
         </Table>
-    )
+    );
 }
