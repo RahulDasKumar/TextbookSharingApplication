@@ -18,7 +18,7 @@ export function ProductsPage() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+        fetch('https://four155-project-pyflask.onrender.com/api/products')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -26,7 +26,7 @@ export function ProductsPage() {
                 setLoading(false);   // Set loading to false
             })
             .catch(err => {
-                setError('Error fetching posts');
+                setError('Error fetching products');
                 setLoading(false);   // Set loading to false in case of error
             });
     }, []);
@@ -54,11 +54,11 @@ if (error) {
             </TableHeader>
             <TableBody>
                 {products.map((product) => (
-                    <TableRow key={product.id}>  {/* Use 'id' as the key */}
-                        <TableCell className="font-medium">{product.title}</TableCell> {/* Use 'title' */}
-                        <TableCell>{product.body ? "Available" : "Out of Stock"}</TableCell> {/* Dummy check for availability */}
-                        <TableCell>${(Math.random() * 100).toFixed(2)}</TableCell> {/* Assigning a random price */}
-                        <TableCell className="text-right">{Math.floor(Math.random() * 100)}</TableCell> {/* Assigning random stock */}
+                    <TableRow key={product._id}>
+                        <TableCell className="font-medium">{product.name}</TableCell>
+                        <TableCell>{product.stock > 0 ? "Available" : "Out of Stock"}</TableCell>
+                        <TableCell>${product.price.toFixed(2)}</TableCell>
+                        <TableCell className="text-right">{product.stock}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>
