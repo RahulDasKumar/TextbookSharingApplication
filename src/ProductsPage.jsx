@@ -16,6 +16,7 @@ export function ProductsPage() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'asc' });
 
     useEffect(() => {
         fetch('https://four155-project-pyflask.onrender.com/api/products')
@@ -31,25 +32,53 @@ export function ProductsPage() {
             });
     }, []);
 
-// Show loading message
-if (loading) {
-    return <div>Loading products...</div>;
-}
+    const sortProducts = (key) => {
+        let direction = 'asc';
+        if (sortConfig.key === key && sortConfig.direction === 'asc') {
+            direction = 'desc';
+        }
+        setSortConfig({ key, direction });
 
-// Show error message
-if (error) {
-    return <div>{error}</div>;
-}
+        const sortedProducts = [...products].sort((a, b) => {
+            if (a[key] < b[key]) return direction === 'asc' ? -1 : 1;
+            if (a[key] > b[key]) return direction === 'asc' ? 1 : -1;
+            return 0;
+        });
+
+        setProducts(sortedProducts);
+    };
+
+    // Show loading message
+    if (loading) {
+        return <div>Loading products...</div>;
+    }
+
+    // Show error message
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     return (
         <Table>
             <TableCaption>A list of your recent Books.</TableCaption>
             <TableHeader>
                 <TableRow>
-                    <TableHead className="w-[100px]">Book Name</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Price</TableHead>
-                    <TableHead className="text-right">Stock</TableHead>
+                    <TableHead className="w-[100px]" onClick={() => sortProducts('name')}>
+                        Book Name 
+                        {sortConfig.key === 'name' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
+                    </TableHead>
+                    <TableHead onClick={() => sortProducts('stock')}>
+                        Status 
+                        {sortConfig.key === 'stock' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
+                    </TableHead>
+                    <TableHead onClick={() => sortProducts('price')}>
+                        Price 
+                        {sortConfig.key === 'price' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
+                    </TableHead>
+                    <TableHead className="text-right" onClick={() => sortProducts('stock')}>
+                        Stock 
+                        {sortConfig.key === 'stock' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
+                    </TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
