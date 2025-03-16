@@ -23,12 +23,12 @@ export function ProductsPage() {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                setProducts(data);  // Set the fetched data
-                setLoading(false);   // Set loading to false
+                setProducts(data);  
+                setLoading(false);  
             })
             .catch(err => {
                 setError('Error fetching products');
-                setLoading(false);   // Set loading to false in case of error
+                setLoading(false);  
             });
     }, []);
 

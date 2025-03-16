@@ -11,7 +11,20 @@ import {
     CarouselPrevious,
 } from "./components/ui/carouseltextbook"
 
+import { useEffect,useState } from "react"
 export function FeaturedProducts() {
+
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        fetch('https://four155-project-backend.onrender.com/api/products')
+            .then(response => {
+                console.log(response)
+                response.json()}
+            )
+            .then(data => setUserData(data));
+    }, []);
+
     return (
         <>
             <section className="w-screen h-[30vh] border border-black"></section>

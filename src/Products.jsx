@@ -1,16 +1,17 @@
-"use client"
-
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import { PaginationComponent } from "./PaginationComponent";
 import { ProductsPage } from "./ProductsPage";
+import { PaginationComponent } from "./PaginationComponent";
 
-export default function Products() {
+const Products = () => {
+
     return (
         <>
-            <Navbar />
-            <ProductsPage/>
-            <PaginationComponent/>
+        <Navbar/>
+        <ProductsPage/>
+        <PaginationComponent/>
         </>
-        );
-}
+    );
+};
+
+export default Products;
