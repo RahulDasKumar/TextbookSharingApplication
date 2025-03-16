@@ -2,17 +2,16 @@
 
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import { ProductsPage } from "./ProductsPage";
 import { PaginationComponent } from "./PaginationComponent";
+import { CartPage } from "./CartPage";
 
-const Products = () => {
-
-export default function Products() {
+export default function Cart() {
     return (
         <>
             <Navbar />
-            <ProductsPage/>
+            <CartPage/>
             <PaginationComponent/>
+
         </>
         );
 }
