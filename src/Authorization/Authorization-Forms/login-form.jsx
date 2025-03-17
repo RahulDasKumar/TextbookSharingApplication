@@ -29,9 +29,30 @@ export function LoginPage() {
         },
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         setLoading(true);
-        console.log(data);
+        try {
+            const response = await fetch('https://four155-project-pyflask.onrender.com/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const responseData = await response.json();
+            console.log(responseData);
+
+        } catch (error) {
+            console.error("Error:", error);
+        } finally {
+            setLoading(false);
+        }
+
     };
 
     const { pending } = useFormStatus();

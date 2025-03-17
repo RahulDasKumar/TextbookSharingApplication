@@ -33,7 +33,7 @@ export const RegisterForm = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/products', {
+            const response = await fetch('https://four155-project-pyflask.onrender.com/api/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,7 +47,6 @@ export const RegisterForm = () => {
 
             const responseData = await response.json();
             console.log(responseData); 
-                    navigate("/");
 
         } catch (error) {
             console.error("Error:", error);
