@@ -1,6 +1,5 @@
 import * as React from "react"
-import EmblaCarousel from 'embla-carousel'
-import AutoScroll from "embla-carousel-auto-scroll"
+
 
 import { Card, CardContent } from "./components/ui/card"
 import {
@@ -17,7 +16,7 @@ export function FeaturedProducts() {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        fetch('https://four155-project-backend.onrender.com/api/products')
+        fetch('https://four155-project-pyflask.onrender.com/api/auth/signup')
             .then(response => {
                 console.log(response)
                 response.json()}

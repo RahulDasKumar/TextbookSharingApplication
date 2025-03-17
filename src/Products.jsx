@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+"use client"
+
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { ProductsPage } from "./ProductsPage";
 import { PaginationComponent } from "./PaginationComponent";
 
-const Products = () => {
 
+export default function Products() {
     return (
         <>
-        <Navbar/>
-        <ProductsPage/>
-        <PaginationComponent/>
+            <Navbar />
+            <ProductsPage/>
+            <PaginationComponent/>
         </>
-    );
-};
-
-export default Products;
+        );
+}
