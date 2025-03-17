@@ -1,10 +1,12 @@
-import { LoginForm } from "./components/ui/login-form"
+import { RegisterForm } from "./Authorization/Authorization-Forms/register-form"
+import Navbar from "./Navbar"
 export default function SignUp() {
-    return (
+    return <>
+    <Navbar/>
         <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-            <div className="w-full max-w-sm">
-                <LoginForm type="Sign Up"/>
+            <div className="w-full">
+                <RegisterForm />
             </div>
         </div>
-    )
+    </>
 }
