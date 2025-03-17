@@ -10,7 +10,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
-import { RegisterSchema } from "@/schema/index";
+import { RegisterSchema } from "@/Schema/index";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm } from "react-hook-form";
 import { Input } from "../UI-Components/input";

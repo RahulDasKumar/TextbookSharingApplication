@@ -10,7 +10,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
-import { LoginSchema } from "@/schema/index";
+import { LoginSchema } from "@/Schema/index";
 import { useForm } from "react-hook-form";
 import { Input } from "../UI-Components/input";
 import { Button } from "../UI-Components/button";
