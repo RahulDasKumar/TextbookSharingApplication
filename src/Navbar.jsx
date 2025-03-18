@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "./components/ui/button"
 import { Route, Routes, Link } from "react-router-dom";
-import Login from "./Login";
-import Products from "./Products";
+
 
 export default function Navbar() {
     return (

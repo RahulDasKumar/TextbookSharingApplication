@@ -1,32 +1,28 @@
 "use client"
 
-
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
-import Login from "./Login";
-import HomePage from "./HomePage";
-import ProductsPage from "./Products";
-import SignUp from './SignUp';
-import CartPage from './Cart';
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
+import Login from "./Login"
+import HomePage from "./HomePage"
+import Products from "./Products"
+import SignUp from './SignUp'
+import CartPage from './Cart'
+import Listings from './Listings' 
+import ProductDetail from './ProductDetail' 
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
-    <Route path="/" element={<HomePage/>}/>
+    <Route path="/" element={<HomePage />} />
     <Route path="/login" element={<Login />} />
-    <Route path="/products" element={<ProductsPage />} />
-    <Route path="/signup" element={<SignUp/>} />
-    <Route path="/cart" element={<CartPage/>} />
-
+    <Route path="/products" element={<Products />} />
+    <Route path="/signup" element={<SignUp />} />
+    <Route path="/cart" element={<CartPage />} />
+    <Route path="/listings" element={<Listings />} />
+    <Route path="/product/:id" element={<ProductDetail />} />
   </Route>
 )
+
 const route = createBrowserRouter(routeDefinitions)
 
-
 export default function App() {
-
-  return (
-    <>
-    <RouterProvider router={route}/>
-    </>
-    
-  );
+  return <RouterProvider router={route} />
 }
