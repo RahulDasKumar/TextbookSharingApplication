@@ -16,7 +16,7 @@ import BackButton from "./back-button";
 const CardWrapper = ({label, title, backButtonHref, backButtonLabel, children} ) => {
 
     return (
-        <Card className="xl:w-1/4 md:w-1/2 shadow-md">
+        <Card className="xl:w-1/4 md:w-1/2 shadow-md m-auto">
             <CardHeader>
                 <AuthHeader label={label} title={title} />
             </CardHeader>
