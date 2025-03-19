@@ -11,6 +11,7 @@ export default function Navbar() {
             </section>
             <section className="w-2/4 h-4/5 m-4  flex flex-row justify-evenly items-center">
                 <Link to="/products"><p className="text-2xl">PRODUCTS</p></Link>
+                <Link to="/listings"><p className="text-2xl">UNCC BOOKS</p></Link>
                 <Link to="/login"><p className="text-2xl">LOGIN</p></Link>
                 <Link to="/signup"><p className="text-2xl">SIGN UP</p></Link>
                 {/* <Link to="/cart"><p className="text-3xl">Cart</p></Link> */}

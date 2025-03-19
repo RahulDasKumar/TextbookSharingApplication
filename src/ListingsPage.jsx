@@ -15,11 +15,11 @@ export function ListingsPage() {
 
     return (
         <>
-            <section className="w-full py-12 bg-black text-white flex items-center justify-center shadow-md border-b border-white">
+            {/* <section className="w-full py-12 bg-black text-white flex items-center justify-center shadow-md border-b border-white">
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight uppercase">
                     UNCC Book Listings
                 </h1>
-            </section>
+            </section> */}
 
             <section className="bg-white py-12 px-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
