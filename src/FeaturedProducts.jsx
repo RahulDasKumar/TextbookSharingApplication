@@ -26,7 +26,7 @@ export function FeaturedProducts() {
 
     return (
         <>
-            <section className="w-screen h-[30vh] border border-black"></section>
+        
             <section className="flex flex-row justify-center overflow-hidden">
         <Carousel
             opts={{

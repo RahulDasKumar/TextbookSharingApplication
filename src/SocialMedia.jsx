@@ -19,7 +19,6 @@ export default function SocialMedia() {
 
     return (
         <>
-        <section className="w-[100vw] h-[40vh]"></section>
         <section className="flex flex-row justify-center scale-50">
         <Carousel className="w-full max-w-sm"
                     plugins={[

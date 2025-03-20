@@ -8,7 +8,6 @@ import {
 export default function AccordionSection() {
     return (
         <>
-        <section className="h-[50vh] w-[100vw]"></section>
         <section className="w-[100vw] flex flex-row justify-center">
         <Accordion type="single" collapsible className="w-2/3">
             <AccordionItem value="item-1">
