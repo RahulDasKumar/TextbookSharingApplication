@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import image from '/images/Book Cover.png';
 
 export default function IntroSection() {
@@ -11,14 +12,15 @@ export default function IntroSection() {
                     className="w-full h-full object-contain scale-90"
                 />
 
-                <a
-                    href="/products"
+                {/* Updated Button */}
+                <Link
+                    to="/listings"
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                 >
                     <button className="px-6 py-3 border-2 border-white text-white bg-transparent rounded hover:bg-white hover:text-black transition duration-200">
-                        View Products
+                        View Listings
                     </button>
-                </a>
+                </Link>
             </section>
 
             <section className="w-screen border border-black bg-white text-black px-10 py-12">
@@ -36,7 +38,6 @@ export default function IntroSection() {
                     </div>
                 </div>
             </section>
-
         </>
     );
 }
