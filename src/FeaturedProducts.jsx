@@ -41,7 +41,7 @@ export function FeaturedProducts() {
                 <h2 className="text-3xl font-bold mb-8 text-center text-black">Featured Listings</h2>
                 <Carousel
                     opts={{
-                        align: "start", // 👈 Ensures no partial cards show
+                        align: "start", // Ensures no partial cards show
                         loop: true,
                         startIndex: 0,
                         inViewThreshold: 1,
@@ -51,7 +51,7 @@ export function FeaturedProducts() {
                         {listings.map((product, index) => (
                             <CarouselItem
                                 key={index}
-                                className="basis-1/3 px-2" // 👈 3 cards per row, no extra
+                                className="basis-1/3 px-2" // 3 cards per row, no extra
                             >
                                 <Card className="border border-black rounded-xl shadow-lg bg-white h-full">
                                     <CardContent className="p-6 flex flex-col justify-between h-[600px] text-black">

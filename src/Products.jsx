@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { ProductsPage } from "./ProductsPage";
-import { PaginationComponent } from "./PaginationComponent";
 
 
 export default function Products() {
@@ -11,7 +10,6 @@ export default function Products() {
         <>
             <Navbar />
             <ProductsPage/>
-            <PaginationComponent/>
         </>
         );
 }

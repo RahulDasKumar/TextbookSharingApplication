@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import {
     Table,
     TableBody,
@@ -8,92 +8,130 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "./components/ui/table";
+} from "./components/ui/table"
 
-// The component for displaying products
 export function ProductsPage() {
-    // State to store the fetched products and loading state
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'asc' });
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+    const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'asc' })
+
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(1)
+    const itemsPerPage = 5
 
     useEffect(() => {
         fetch('https://four155-project-pyflask.onrender.com/api/products')
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                setProducts(data);  
-                setLoading(false);  
+                setProducts(data)
+                setLoading(false)
             })
             .catch(err => {
-                setError('Error fetching products');
-                setLoading(false);  
-            });
-    }, []);
+                setError('Error fetching products')
+                setLoading(false)
+            })
+    }, [])
 
     const sortProducts = (key) => {
-        let direction = 'asc';
+        let direction = 'asc'
         if (sortConfig.key === key && sortConfig.direction === 'asc') {
-            direction = 'desc';
+            direction = 'desc'
         }
-        setSortConfig({ key, direction });
+        setSortConfig({ key, direction })
 
-        const sortedProducts = [...products].sort((a, b) => {
-            if (a[key] < b[key]) return direction === 'asc' ? -1 : 1;
-            if (a[key] > b[key]) return direction === 'asc' ? 1 : -1;
-            return 0;
-        });
+        const sorted = [...products].sort((a, b) => {
+            if (a[key] < b[key]) return direction === 'asc' ? -1 : 1
+            if (a[key] > b[key]) return direction === 'asc' ? 1 : -1
+            return 0
+        })
 
-        setProducts(sortedProducts);
-    };
-
-    // Show loading message
-    if (loading) {
-        return <div>Loading products...</div>;
+        setProducts(sorted)
+        setCurrentPage(1) // Reset to page 1 when sorting
     }
 
-    // Show error message
-    if (error) {
-        return <div>{error}</div>;
-    }
+    // Pagination logic
+    const totalPages = Math.ceil(products.length / itemsPerPage)
+    const indexOfLastItem = currentPage * itemsPerPage
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage
+    const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem)
+
+    // Show loading
+    if (loading) return <div>Loading products...</div>
+    if (error) return <div>{error}</div>
 
     return (
-        <Table>
-            <TableCaption>A list of your recent Books.</TableCaption>
+        <>
+            <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead className="w-[100px]" onClick={() => sortProducts('name')}>
-                        Book Name 
-                        {sortConfig.key === 'name' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
+                    <TableHead className="w-1/3 whitespace-nowrap cursor-pointer" onClick={() => sortProducts('name')}>
+                    Book Name
+                    {sortConfig.key === 'name' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
                     </TableHead>
-                    <TableHead onClick={() => sortProducts('stock')}>
-                        Status 
-                        {sortConfig.key === 'stock' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
+                    <TableHead className="w-1/4 whitespace-nowrap cursor-pointer" onClick={() => sortProducts('stock')}>
+                    Status
+                    {sortConfig.key === 'stock' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
                     </TableHead>
-                    <TableHead onClick={() => sortProducts('price')}>
-                        Price 
-                        {sortConfig.key === 'price' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
+                    <TableHead className="w-1/4 whitespace-nowrap cursor-pointer" onClick={() => sortProducts('price')}>
+                    Price
+                    {sortConfig.key === 'price' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
                     </TableHead>
-                    <TableHead className="text-right" onClick={() => sortProducts('stock')}>
-                        Stock 
-                        {sortConfig.key === 'stock' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
+                    <TableHead className="text-right w-1/5 whitespace-nowrap cursor-pointer" onClick={() => sortProducts('stock')}>
+                    Stock
+                    {sortConfig.key === 'stock' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
                     </TableHead>
                 </TableRow>
-            </TableHeader>
-            <TableBody>
-                {products.map((product) => (
+                </TableHeader>
+
+                <TableBody>
+                {currentProducts.map((product) => (
                     <TableRow key={product._id}>
-                        <TableCell className="font-medium">{product.name}</TableCell>
-                        <TableCell>{product.stock > 0 ? "Available" : "Out of Stock"}</TableCell>
-                        <TableCell>${product.price.toFixed(2)}</TableCell>
-                        <TableCell className="text-right">{product.stock}</TableCell>
+                    <TableCell className="font-medium w-1/3 truncate max-w-[200px]">{product.name}</TableCell>
+                    <TableCell className="w-1/4">{product.stock > 0 ? "Available" : "Out of Stock"}</TableCell>
+                    <TableCell className="w-1/4">${product.price.toFixed(2)}</TableCell>
+                    <TableCell className="text-right w-1/5">{product.stock}</TableCell>
                     </TableRow>
                 ))}
-            </TableBody>
-            <TableFooter>
-                
-            </TableFooter>
-        </Table>
-    );
+                </TableBody>
+
+                <TableFooter>
+                    <TableRow>
+                        <TableCell colSpan={4} className="text-center py-4">
+                            {/* Pagination controls */}
+                            <div className="flex justify-center items-center space-x-2">
+                                <button
+                                    disabled={currentPage === 1}
+                                    onClick={() => setCurrentPage(currentPage - 1)}
+                                    className="px-3 py-1 border rounded disabled:opacity-50"
+                                >
+                                    Prev
+                                </button>
+
+                                {[...Array(totalPages)].map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentPage(index + 1)}
+                                        className={`px-3 py-1 border rounded ${
+                                            currentPage === index + 1 ? "bg-black text-white" : ""
+                                        }`}
+                                    >
+                                        {index + 1}
+                                    </button>
+                                ))}
+
+                                <button
+                                    disabled={currentPage === totalPages}
+                                    onClick={() => setCurrentPage(currentPage + 1)}
+                                    className="px-3 py-1 border rounded disabled:opacity-50"
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        </TableCell>
+                    </TableRow>
+                </TableFooter>
+            </Table>
+        </>
+    )
 }
