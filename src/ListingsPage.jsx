@@ -24,7 +24,7 @@ export function ListingsPage({ searchQuery }) {
     })
 
     return (
-        <section className="bg-white py-12 px-4">
+        <section className="bg-white pt-4 pb-12 px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                 {filteredProducts.map((product) => (
                     <Card
