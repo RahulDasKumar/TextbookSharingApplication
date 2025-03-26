@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ToastContext"; //  Adjust path as needed
 
 export default function Navbar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
+    const { showToast } = useToast(); //  Access the toast function
 
     useEffect(() => {
         const loginStatus = localStorage.getItem("isLoggedIn");
@@ -12,8 +14,10 @@ export default function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("user");
         setIsLoggedIn(false);
-        navigate("/"); // Redirect to homepage
+        showToast("Logged out successfully", "success"); //  Toast message
+        navigate("/");
     };
 
     return (
