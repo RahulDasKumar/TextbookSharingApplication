@@ -1,15 +1,24 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import defaultAvatar from "/images/default-avatar.png" // Replace with your avatar image path
+import defaultAvatar from "/images/default-avatar.png"
 
 export default function ProfilePage() {
     const navigate = useNavigate()
+    const [user, setUser] = useState(null)
 
-    // Placeholder user info
-    const user = {
-        name: "John Doe",
-        email: "johndoe@example.com",
-        joined: "January 2025",
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user")
+        if (storedUser) {
+            setUser(JSON.parse(storedUser))
+        }
+    }, [])
+
+    if (!user) {
+        return (
+            <div className="text-center pt-20 text-xl text-gray-500">
+                Loading profile...
+            </div>
+        )
     }
 
     return (
@@ -21,9 +30,8 @@ export default function ProfilePage() {
                         alt="User Avatar"
                         className="w-32 h-32 rounded-full border mb-6"
                     />
-                    <h1 className="text-3xl font-bold mb-2">{user.name}</h1>
-                    <p className="text-lg text-gray-700 mb-1">{user.email}</p>
-                    <p className="text-sm text-gray-500 mb-6">Member since {user.joined}</p>
+                    <h1 className="text-3xl font-bold mb-2">{user.username}</h1>
+                    <p className="text-lg text-gray-700 mb-6">{user.email}</p>
 
                     <button
                         onClick={() => navigate("/")}

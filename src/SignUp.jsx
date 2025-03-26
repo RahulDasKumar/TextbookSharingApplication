@@ -3,10 +3,10 @@ import Navbar from "./Navbar"
 export default function SignUp() {
     return <>
     <Navbar/>
-        <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-            <div className="w-full">
-                <RegisterForm />
-            </div>
+    <div className="flex w-full justify-center pt-20 px-4">
+        <div className="w-full">
+            <RegisterForm />
+        </div>
         </div>
     </>
 }

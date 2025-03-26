@@ -17,9 +17,14 @@ import { Button } from "../UI-Components/button";
 import { useFormStatus } from "react-dom";
 import { useState } from "react";
 import {yupResolver} from "@hookform/resolvers/yup"
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ToastContext"
+
 
 export function LoginPage() {
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const { showToast } = useToast();
 
     const form = useForm({
         resolver: yupResolver(LoginSchema),
@@ -39,21 +44,37 @@ export function LoginPage() {
                 },
                 body: JSON.stringify(data),
             });
-
+    
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-
+    
             const responseData = await response.json();
             console.log(responseData);
-
+    
+            // Save login state
+            localStorage.setItem("isLoggedIn", "true");
+    
+            // Save user object to localStorage if available
+            if (responseData.user) {
+                localStorage.setItem("user", JSON.stringify(responseData.user));
+            }
+    
+            // Show success message and navigate to profile
+            showToast("Login successful!", "success");
+            navigate("/profile");
+            
+    
         } catch (error) {
             console.error("Error:", error);
         } finally {
             setLoading(false);
         }
-
     };
+    
+    
+    
+    
 
     const { pending } = useFormStatus();
     return (

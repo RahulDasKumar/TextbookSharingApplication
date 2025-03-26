@@ -4,7 +4,7 @@ import Navbar from "./Navbar"
 export default function Login() {
     return <>
         <Navbar />
-        <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+        <div className="flex w-full justify-center pt-20 px-4">
             <div className="w-full">
                 <LoginPage/>
             </div>
