@@ -8,6 +8,7 @@ import SignUp from './SignUp'
 import CartPage from './Cart'
 import Listings from './Listings' 
 import ProductDetail from './ProductDetail' 
+import Profile from './Profile'
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
@@ -18,6 +19,7 @@ const routeDefinitions = createRoutesFromElements(
     <Route path="/cart" element={<CartPage />} />
     <Route path="/listings" element={<Listings />} />
     <Route path="/product/:id" element={<ProductDetail />} />
+    <Route path="/profile" element={<Profile />} />
   </Route>
 )
 
