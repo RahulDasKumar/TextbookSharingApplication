@@ -11,6 +11,11 @@ export default function ProfilePage() {
         if (storedUser) {
             setUser(JSON.parse(storedUser))
         }
+
+        // TODO: Once backend session/token system is live,
+        // fetch user data securely from the server instead of localStorage
+        // fetch("/api/user/me", { headers: { Authorization: `Bearer ${token}` } })
+
     }, [])
 
     if (!user) {
@@ -22,23 +27,75 @@ export default function ProfilePage() {
     }
 
     return (
-        <div className="flex justify-center items-start min-h-screen bg-white px-4 pt-20">
-            <div className="w-full max-w-lg p-10 border border-black rounded-2xl shadow-lg bg-white text-black">
-                <div className="flex flex-col items-center">
+        <div className="min-h-screen bg-white px-6 pt-16 pb-10">
+
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                {/* LEFT SIDE: User Overview */}
+                <div className="border border-black rounded-xl p-6 shadow-md bg-white text-black flex flex-col justify-center items-center">
                     <img
                         src={defaultAvatar}
-                        alt="User Avatar"
-                        className="w-32 h-32 rounded-full border mb-6"
+                        alt="Profile"
+                        className="w-40 h-40 rounded-full border mb-4"
                     />
-                    <h1 className="text-3xl font-bold mb-2">{user.username}</h1>
-                    <p className="text-lg text-gray-700 mb-6">{user.email}</p>
+                    <h2 className="text-2xl font-bold mb-1 text-center">{user.username}</h2>
+                    <p className="text-gray-600 text-center">{user.email}</p>
+                </div>
 
-                    <button
-                        onClick={() => navigate("/")}
-                        className="mt-2 px-5 py-2 text-sm border border-black rounded hover:bg-black hover:text-white transition"
-                    >
-                        Go to Homepage
-                    </button>
+                {/* RIGHT SIDE: Settings */}
+                <div className="border border-black rounded-xl p-6 shadow-md bg-white text-black">
+                    <h3 className="text-xl font-semibold mb-4">Settings</h3>
+
+                    <div className="space-y-6">
+                        {/* Change Profile Picture */}
+                        <div>
+                            <label className="block text-sm font-medium mb-1">Profile Picture</label>
+                            <input type="file" className="w-full border rounded px-3 py-2 text-sm" disabled />
+                            <p className="text-xs text-gray-400 mt-1">
+                                {/* TODO: Send uploaded image to backend and update avatar */}
+                            </p>
+                        </div>
+
+                        {/* Change Email */}
+                        <div>
+                            <label className="block text-sm font-medium mb-1">Update Email</label>
+                            <input
+                                type="email"
+                                placeholder={user.email}
+                                className="w-full border rounded px-3 py-2 text-sm"
+                                disabled
+                            />
+                            <p className="text-xs text-gray-400 mt-1">
+                                {/* TODO: Create email update endpoint (PATCH /api/user/email) */}
+                            </p>
+                        </div>
+
+                        {/* Change Password */}
+                        <div>
+                            <label className="block text-sm font-medium mb-1">Change Password</label>
+                            <input
+                                type="password"
+                                placeholder="••••••••"
+                                className="w-full border rounded px-3 py-2 text-sm"
+                                disabled
+                            />
+                            <p className="text-xs text-gray-400 mt-1">
+                                {/* TODO: Add backend route for password update with validation */}
+                            </p>
+                        </div>
+
+                        {/* Delete Account */}
+                        <div>
+                            <button
+                                className="w-full mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                                disabled
+                            >
+                                Delete Account
+                            </button>
+                            <p className="text-xs text-gray-400 mt-1 text-center">
+                                {/* TODO: Hook this to DELETE /api/user/:id with confirmation modal */}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

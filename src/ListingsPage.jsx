@@ -17,9 +17,9 @@ export function ListingsPage({ searchQuery }) {
     const filteredProducts = products.filter((product) => {
         const search = searchQuery.toLowerCase()
         return (
-            product.Name.toLowerCase().includes(search) ||
-            product.City.toLowerCase().includes(search) ||
-            product.Category.toLowerCase().includes(search)
+            product.Name.toLowerCase().startsWith(search) ||
+            product.City.toLowerCase().startsWith(search) ||
+            product.Category.toLowerCase().startsWith(search)
         )
     })
 
