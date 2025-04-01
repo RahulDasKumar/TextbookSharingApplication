@@ -27,7 +27,7 @@ export default function Navbar() {
             <section className="w-2/4 h-4/5 m-4 content-center">
                 <Link to="/"><p className="text-2xl">HOME</p></Link>
             </section>
-            <section className="w-2/4 h-4/5 m-4 flex flex-row justify-evenly items-center">
+            <section className="w-full h-4/5 m-4 flex flex-row justify-between items-center px-8">
                 <Link to="/products"><p className="text-2xl">PRODUCTS</p></Link>
                 <Link to="/listings"><p className="text-2xl">UNCC BOOKS</p></Link>
 
