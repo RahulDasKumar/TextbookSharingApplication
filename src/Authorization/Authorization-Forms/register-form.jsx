@@ -20,6 +20,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export const RegisterForm = () => {
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate(); 
     const form = useForm({
         resolver: yupResolver(RegisterSchema),
         defaultValues: {
@@ -47,6 +48,8 @@ export const RegisterForm = () => {
 
             const responseData = await response.json();
             console.log(responseData); 
+
+            navigate("/login");
 
         } catch (error) {
             console.error("Error:", error);

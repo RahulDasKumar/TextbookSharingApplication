@@ -18,7 +18,7 @@ export function ProductsPage() {
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1)
-    const itemsPerPage = 5
+    const itemsPerPage = 10
 
     useEffect(() => {
         fetch('https://four155-project-pyflask.onrender.com/api/products')
