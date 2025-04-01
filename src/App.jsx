@@ -9,6 +9,8 @@ import CartPage from './Cart'
 import Listings from './Listings' 
 import ProductDetail from './ProductDetail' 
 import Profile from './Profile'
+import NewListingForm from "./NewListingForm";
+
 
 const routeDefinitions = createRoutesFromElements(
   <Route>
@@ -20,6 +22,7 @@ const routeDefinitions = createRoutesFromElements(
     <Route path="/listings" element={<Listings />} />
     <Route path="/product/:id" element={<ProductDetail />} />
     <Route path="/profile" element={<Profile />} />
+    <Route path="/listings/new" element={<NewListingForm />} />
   </Route>
 )
 
