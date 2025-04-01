@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ToastContext"; //  Adjust path as needed
+import cartImg from "/images/cart.png"; // Adjust path if needed
+
 
 export default function Navbar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,12 +34,18 @@ export default function Navbar() {
                 {isLoggedIn ? (
                     <>
                         <Link to="/profile"><p className="text-2xl">PROFILE</p></Link>
+
                         <button
                             onClick={handleLogout}
                             className="text-2xl text-black hover:underline transition"
                         >
                             LOGOUT
                         </button>
+                        <Link to="/cart">
+                            <button className="p-2 hover:opacity-80 transition">
+                                <img src={cartImg} alt="Cart" className="w-8 h-8" />
+                            </button>
+                        </Link>
                     </>
                 ) : (
                     <>
@@ -45,6 +53,8 @@ export default function Navbar() {
                         <Link to="/signup"><p className="text-2xl">SIGN UP</p></Link>
                     </>
                 )}
+
+                
             </section>
         </nav>
     );
