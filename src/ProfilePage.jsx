@@ -9,14 +9,12 @@ export default function ProfilePage() {
     useEffect(() => {
         const storedUser = localStorage.getItem("user")
         if (storedUser) {
-            setUser(JSON.parse(storedUser))
+            const parsedUser = JSON.parse(storedUser)
+            console.log("Parsed user from localStorage:", parsedUser) // Add this
+            setUser(parsedUser)
         }
-
-        // TODO: Once backend session/token system is live,
-        // fetch user data securely from the server instead of localStorage
-        // fetch("/api/user/me", { headers: { Authorization: `Bearer ${token}` } })
-
     }, [])
+    
 
     if (!user) {
         return (
@@ -90,7 +88,8 @@ export default function ProfilePage() {
                                 onClick={async () => {
                                     if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
                                         try {
-                                            const response = await fetch(`https://four155-project-pyflask.onrender.com/api/users/${user._id}`, {
+                                            console.log("Deleting user with ID:", user.id);
+                                            const response = await fetch(`https://four155-project-pyflask.onrender.com/api/users/${user.id}`, {
                                                 method: "DELETE",
                                             });
 
