@@ -88,8 +88,8 @@ export default function ProfilePage() {
                                 onClick={async () => {
                                     if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
                                         try {
-                                            console.log("Deleting user with ID:", user.id);
-                                            const response = await fetch(`https://four155-project-pyflask.onrender.com/api/users/${user.id}`, {
+                                            console.log("Deleting user with ID:", user._id);
+                                            const response = await fetch(`https://four155-project-pyflask.onrender.com/api/users/${user._id}`, {
                                                 method: "DELETE",
                                             });
 

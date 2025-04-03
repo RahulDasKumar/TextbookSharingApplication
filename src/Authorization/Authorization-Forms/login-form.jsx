@@ -57,11 +57,8 @@ export function LoginPage() {
     
             // Save user object to localStorage if available
             if (responseData.user) {
-                const normalizedUser = {
-                    ...responseData.user,           
-                    id: responseData.user._id      
-                };
-                localStorage.setItem("user", JSON.stringify(normalizedUser));
+                console.log("Logged in user:", responseData.user);  // Check for _id here
+                localStorage.setItem("user", JSON.stringify(responseData.user));
             }
             
             // Show success message and navigate to profile
