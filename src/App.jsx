@@ -9,7 +9,7 @@ import CartPage from './Cart'
 import Listings from './Listings' 
 import ProductDetail from './ProductDetail' 
 import Profile from './Profile'
-
+import ChatComponent from './Chat'
 const routeDefinitions = createRoutesFromElements(
   <Route>
     <Route path="/" element={<HomePage />} />
@@ -20,6 +20,7 @@ const routeDefinitions = createRoutesFromElements(
     <Route path="/listings" element={<Listings />} />
     <Route path="/product/:id" element={<ProductDetail />} />
     <Route path="/profile" element={<Profile />} />
+    <Route path='/chat' element={<ChatComponent/>}/>
   </Route>
 )
 
