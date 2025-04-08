@@ -22,16 +22,18 @@ export function ListingsPage({ searchQuery = "" }) {
 
     const filteredProducts = products.filter((product) => {
         const search = searchQuery.toLowerCase();
+    
         const matchesSearch =
-            product.Name.toLowerCase().startsWith(search) ||
-            product.City.toLowerCase().startsWith(search) ||
-            product.Category.toLowerCase().startsWith(search);
-
+            (product?.Name?.toLowerCase().startsWith(search) || "") ||
+            (product?.City?.toLowerCase().startsWith(search) || "") ||
+            (product?.Category?.toLowerCase().startsWith(search) || "");
+    
         const matchesPrice =
             !priceFilter || parseFloat(product.Price) <= parseFloat(priceFilter);
-
+    
         return matchesSearch && matchesPrice;
     });
+    
 
     return (
         <section className="bg-white pt-4 pb-12 px-4">
