@@ -85,6 +85,8 @@ export default function ProfilePage() {
                         <div>
                             <button
                                 className="w-full mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+
+                            
                                 onClick={async () => {
                                     if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
                                         try {
@@ -108,6 +110,7 @@ export default function ProfilePage() {
                                         }
                                     }
                                 }}
+
                             >
                                 Delete Account
                             </button>
