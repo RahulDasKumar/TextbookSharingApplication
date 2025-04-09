@@ -9,7 +9,6 @@ export default function Cart() {
         <>
             <Navbar />
             <CartPage/>
-            <PaginationComponent/>
         </>
         );
 }
