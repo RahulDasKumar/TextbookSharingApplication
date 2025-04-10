@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
+import { useCart } from "@/context/CartContext";
 import placeholderImage from '/images/Book Cover.png'
 
 export function ProductDetailPage() {
     const { id } = useParams()
     const navigate = useNavigate()
     const [product, setProduct] = useState(null)
+    const { addToCart } = useCart();
 
     useEffect(() => {
         fetch("https://four155-project-pyflask.onrender.com/api/listings")
@@ -71,6 +73,12 @@ export function ProductDetailPage() {
                         className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition w-fit"
                     >
                         Delete Listing
+                    </button>
+                    <button
+                        onClick={() => addToCart(product)}
+                        className="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition w-fit"
+                    >
+                        Add to Cart
                     </button>
                 </div>
             </div>
