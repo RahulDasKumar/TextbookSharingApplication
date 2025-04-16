@@ -14,7 +14,7 @@ interface UseAutoScrollOptions {
 
 export function useAutoScroll(options: UseAutoScrollOptions = {}) {
   const { offset = 20, smooth = false, content } = options;
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef(null);
   const lastContentHeight = useRef(0);
   const userHasScrolled = useRef(false);
 
