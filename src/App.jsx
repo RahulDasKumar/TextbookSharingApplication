@@ -5,16 +5,28 @@ import Login from "./Login"
 import HomePage from "./HomePage"
 import Products from "./Products"
 import SignUp from './SignUp'
-import CartPage from './Cart'
 import Listings from './Listings' 
 import ProductDetail from './ProductDetail' 
 import Profile from './Profile'
 import ChatComponent from './Chat'
+
+import NewListingForm from "./NewListingForm";
+import CartLayout from "./CartLayout";
+
+
+
 const routeDefinitions = createRoutesFromElements(
   <Route>
-    <Route path="/" element={<HomePage />} />
+    {/* Routes wrapped with CartLayout */}
+    <Route path="/" element={<CartLayout><HomePage /></CartLayout>} />
+    <Route path="/products" element={<CartLayout><Products /></CartLayout>} />
+    <Route path="/listings" element={<CartLayout><Listings /></CartLayout>} />
+    <Route path="/product/:id" element={<CartLayout><ProductDetail /></CartLayout>} />
+    <Route path="/profile" element={<CartLayout><Profile /></CartLayout>} />
+    <Route path="/listings/new" element={<CartLayout><NewListingForm /></CartLayout>} />
+
+    {/* Auth routes without CartLayout */}
     <Route path="/login" element={<Login />} />
-    <Route path="/products" element={<Products />} />
     <Route path="/signup" element={<SignUp />} />
     <Route path="/cart" element={<CartPage />} />
     <Route path="/listings" element={<Listings />} />
@@ -22,7 +34,7 @@ const routeDefinitions = createRoutesFromElements(
     <Route path="/profile" element={<Profile />} />
     <Route path='/chat' element={<ChatComponent/>}/>
   </Route>
-)
+);
 
 const route = createBrowserRouter(routeDefinitions)
 
