@@ -20,7 +20,7 @@ export default function SettingsPage() {
     }, []);
 
     const handleUpdate = async (field, value) => {
-        const url = `https://four155-project-pyflask.onrender.com/users/${field}/${user._id}`;
+        const url = `https://four155-project-pyflask.onrender.com/api/users/${field}/${user._id}`;
         const key = {
             username: "new_username",
             email: "new_email",
