@@ -9,14 +9,12 @@ export default function ProfilePage() {
     useEffect(() => {
         const storedUser = localStorage.getItem("user")
         if (storedUser) {
-            setUser(JSON.parse(storedUser))
+            const parsedUser = JSON.parse(storedUser)
+            console.log("Parsed user from localStorage:", parsedUser) // Add this
+            setUser(parsedUser)
         }
-
-        // TODO: Once backend session/token system is live,
-        // fetch user data securely from the server instead of localStorage
-        // fetch("/api/user/me", { headers: { Authorization: `Bearer ${token}` } })
-
     }, [])
+    
 
     if (!user) {
         return (
@@ -88,13 +86,37 @@ export default function ProfilePage() {
                             <button
                                 className="w-full mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
                             
+                                onClick={async () => {
+                                    if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+                                        try {
+                                            console.log("Deleting user with ID:", user._id);
+                                            const response = await fetch(`https://four155-project-pyflask.onrender.com/api/users/${user._id}`, {
+                                                method: "DELETE",
+                                            });
+
+                                            const result = await response.json();
+                                            if (response.ok) {
+                                                alert("Account deleted successfully.");
+                                                localStorage.removeItem("isLoggedIn");
+                                                localStorage.removeItem("user");
+                                                navigate("/");
+                                            } else {
+                                                alert(result.message || "Failed to delete account.");
+                                            }
+                                        } catch (err) {
+                                            console.error("Error deleting account:", err);
+                                            alert("Something went wrong.");
+                                        }
+                                    }
+                                }}
                             >
                                 Delete Account
                             </button>
                             <p className="text-xs text-gray-400 mt-1 text-center">
-                                {/* TODO: Hook this to DELETE /api/user/:id with confirmation modal */}
+                                This will permanently remove your account and data.
                             </p>
                         </div>
+
                     </div>
                 </div>
             </div>
