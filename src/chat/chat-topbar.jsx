@@ -1,11 +1,11 @@
 import React from "react";
-import { Avatar, AvatarImage } from "../ui/avatar";
-import { UserData } from "../../data";
+import { Avatar, AvatarImage } from "../components/ui/avatar";
+import { UserData } from "../data";
 import { Info, Phone, Video } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/button";
-import { ExpandableChatHeader } from "../ui/chat/expandable-chat";
+import { buttonVariants } from "../components/ui/button";
+import { ExpandableChatHeader } from "../components/ui/chat/expandable-chat";
 
 
 export const TopbarIcons = [{ icon: Phone }, { icon: Video }, { icon: Info }];

@@ -10,11 +10,11 @@ import {
   ChatBubble,
   ChatBubbleAction,
   ChatBubbleActionWrapper,
-} from '../ui/chat/chat-bubble'
+} from '../components/ui/chat/chat-bubble'
 
 import {
   ChatMessageList
-} from '../ui/chat/chat-message-list'
+} from '../components/ui/chat/chat-message-list'
 
 import { DotsVerticalIcon, HeartIcon, Share1Icon } from "@radix-ui/react-icons";
 import { Forward, Heart } from "lucide-react";

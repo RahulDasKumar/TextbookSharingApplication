@@ -1,8 +1,8 @@
-import { UserData } from "../../data";
+import { UserData } from "../data";
 import ChatTopbar from "./chat-topbar";
 import { ChatList } from "./chat-list";
 import React, { useEffect, useState } from "react";
-import useChatStore from "../ui/chat/hooks/useChatStore";
+import useChatStore from "../components/ui/chat/hooks/useChatStore";
 import ChatBottombar from "./chat-bottombar";
 
 

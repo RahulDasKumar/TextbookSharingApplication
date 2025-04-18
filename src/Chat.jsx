@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { ChatLayout } from "./components/chat/chat-layout";
+import { ChatLayout } from "./chat/chat-layout";
 
- function ChatComponent() {
+function ChatComponent() {
     const [defaultLayout, setDefaultLayout] = useState();
 
     useEffect(() => {

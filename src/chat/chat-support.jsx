@@ -7,21 +7,21 @@ import {
   ChatBubble,
   ChatBubbleAvatar,
   ChatBubbleMessage
-} from "../ui/chat/chat-bubble";
+} from "../components/ui/chat/chat-bubble";
 import {
- ChatMessageList,
-} from '../ui/chat/chat-message-list'
+  ChatMessageList,
+} from '../components/ui/chat/chat-message-list'
 
 import {
   ExpandableChat,
   ExpandableChatHeader,
   ExpandableChatBody,
   ExpandableChatFooter,
-} from '../ui/chat/expandable-chat'
+} from '../components/ui/chat/expandable-chat'
 
 import {
   ChatInput
-} from '../ui/chat/chat-input'
+} from '../components/ui/chat/chat-input'
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -41,7 +41,7 @@ export default function ChatSupport() {
   );
   const [inputMessage, setInputMessage] = useState("");
 
-  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef < HTMLDivElement > (null);
 
   useEffect(() => {
     if (messagesContainerRef.current) {

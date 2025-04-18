@@ -1,6 +1,6 @@
 "use client";
 
-import { UserData } from "../../data";
+import { UserData } from "../data";
 import React, { useEffect, useState } from "react";
 import {
   ResizableHandle,
@@ -8,7 +8,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { cn } from "@/lib/utils";
-import { Sidebar } from "../sidebar";
+import { Sidebar } from "../components/sidebar";
 import { Chat } from "./chat";
 
 
@@ -69,7 +69,7 @@ export function ChatLayout({
         }}
         className={cn(
           isCollapsed &&
-            "min-w-[50px] md:min-w-[70px] transition-all duration-300 ease-in-out",
+          "min-w-[50px] md:min-w-[70px] transition-all duration-300 ease-in-out",
         )}
       >
         <Sidebar
