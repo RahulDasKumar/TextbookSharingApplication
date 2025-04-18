@@ -1,36 +1,31 @@
 export const Users = [
     {
         id: 1,
-        avatar:
-            "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
+        avater: "" ,
         messages: [],
         name: "Jane Doe",
     },
     {
         id: 2,
-        avatar:
-            "https://images.freeimages.com/images/large-previews/fdd/man-avatar-1632964.jpg?fmt=webp&h=350",
+        avater: "" ,
         messages: [],
         name: "John Doe",
     },
     {
         id: 3,
-        avatar:
-            "https://images.freeimages.com/images/large-previews/d1f/lady-avatar-1632967.jpg?fmt=webp&h=350",
+        avater: "" ,
         messages: [],
         name: "Elizabeth Smith",
     },
     {
         id: 4,
-        avatar:
-            "https://images.freeimages.com/images/large-previews/023/geek-avatar-1632962.jpg?fmt=webp&h=350",
+        avater: "" ,
         messages: [],
         name: "John Smith",
     },
     {
         id: 5,
-        avatar:
-            "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+        avater: "" ,
         messages: [],
         name: "Jakob Hoeg",
     },
@@ -39,53 +34,46 @@ export const Users = [
 export const UserData = [
     {
         id: 1,
-        avatar:
-            "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
+        avater: "" ,
         messages: [
             {
                 id: 1,
-                avatar:
-                    "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
+                avater: "" ,
                 name: "Jane Doe",
                 message: "Hey, Jakob",
                 timestamp: "10:00 AM",
             },
             {
                 id: 2,
-                avatar:
-                    "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+                avater: "" ,
                 name: "Jakob Hoeg",
                 message: "Hey!",
                 timestamp: "10:01 AM",
             },
             {
                 id: 3,
-                avatar:
-                    "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
+                avater: "" ,
                 name: "Jane Doe",
                 message: "How are you?",
                 timestamp: "10:02 AM",
             },
             {
                 id: 4,
-                avatar:
-                    "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+                avater: "" ,
                 name: "Jakob Hoeg",
                 message: "I am good, you?",
                 timestamp: "10:03 AM",
             },
             {
                 id: 5,
-                avatar:
-                    "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
+                avater: "" ,
                 name: "Jane Doe",
                 message: "I am good too!",
                 timestamp: "10:04 AM",
             },
             {
                 id: 6,
-                avatar:
-                    "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+                avater: "" ,
                 name: "Jakob Hoeg",
                 message: "That is good to hear!",
                 timestamp: "10:05 AM",
@@ -93,16 +81,14 @@ export const UserData = [
             },
             {
                 id: 7,
-                avatar:
-                    "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
+                avater: "" ,
                 name: "Jane Doe",
                 message: "How has your day been so far?",
                 timestamp: "10:06 AM",
             },
             {
                 id: 8,
-                avatar:
-                    "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+                avater: "" ,
                 name: "Jakob Hoeg",
                 message:
                     "It has been good. I went for a run this morning and then had a nice breakfast. How about you?",
@@ -110,8 +96,7 @@ export const UserData = [
             },
             {
                 id: 9,
-                avatar:
-                    "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
+                avater: "" ,
                 name: "Jane Doe",
                 isLoading: true,
             },
@@ -120,22 +105,19 @@ export const UserData = [
     },
     {
         id: 2,
-        avatar:
-            "https://images.freeimages.com/images/large-previews/fdd/man-avatar-1632964.jpg?fmt=webp&h=350",
+        avater: "" ,
         name: "John Doe",
         messages: [],
     },
     {
         id: 3,
-        avatar:
-            "https://images.freeimages.com/images/large-previews/d1f/lady-avatar-1632967.jpg?fmt=webp&h=350",
+        avater: "" ,
         name: "Elizabeth Smith",
         messages: [],
     },
     {
         id: 4,
-        avatar:
-            "https://images.freeimages.com/images/large-previews/023/geek-avatar-1632962.jpg?fmt=webp&h=350",
+        avater: "" ,
         name: "John Smith",
         messages: [],
     },
@@ -152,8 +134,7 @@ export const ChatBotMessages = [
     },
     {
         id: 2,
-        avatar:
-            "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+        avater: "" ,
         name: "Jakob Hoeg",
         message: "I need help with my order",
         timestamp: "10:01 AM",
@@ -169,8 +150,7 @@ export const ChatBotMessages = [
     },
     {
         id: 4,
-        avatar:
-            "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+        avater: "" ,
         name: "Jakob Hoeg",
         message: "123456",
         timestamp: "10:03 AM",
@@ -195,8 +175,7 @@ export const ChatBotMessages = [
     },
     {
         id: 7,
-        avatar:
-            "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+        avater: "" ,
         name: "Jakob Hoeg",
         message: "Thank you for your help!",
         timestamp: "10:06 AM",
@@ -216,8 +195,7 @@ export const ChatBotMessages = [
 
 export const loggedInUserData = {
     id: 5,
-    avatar:
-        "https://avatars.githubusercontent.com/u/114422072?s=400&u=8a176a310ca29c1578a70b1c33bdeea42bf000b4&v=4",
+    avater: "" ,
     name: "Jakob Hoeg",
 };
 
