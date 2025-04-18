@@ -28,7 +28,7 @@ const routeDefinitions = createRoutesFromElements(
     {/* Auth routes without CartLayout */}
     <Route path="/login" element={<Login />} />
     <Route path="/signup" element={<SignUp />} />
-    <Route path='/test' element={<ChatComponent/>}/>
+    <Route path='/chat' element={<ChatComponent/>}/>
   </Route>
 );
 
