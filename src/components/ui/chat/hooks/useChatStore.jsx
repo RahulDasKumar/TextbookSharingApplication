@@ -11,7 +11,6 @@ import { create } from "zustand";
 
 const useChatStore = create()((set) => ({
   selectedUser: Users[4],
-
   selectedExample: { name: "Messenger example", url: "/" },
 
   examples: [
@@ -35,7 +34,10 @@ const useChatStore = create()((set) => ({
   setchatBotMessages: (fn) =>
     set(({ chatBotMessages }) => ({ chatBotMessages: fn(chatBotMessages) })),
 
-  messages: UserData[0].messages,
+  setSelectedUser: (selectedUser) => set({ selectedUser, messages: selectedUser.messages }),
+
+  
+  messages: UserData[1].messages,
   setMessages: (fn) => set(({ messages }) => ({ messages: fn(messages) })),
 
   hasInitialAIResponse: false,
