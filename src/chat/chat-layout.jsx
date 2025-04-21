@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Sidebar } from "../components/sidebar";
 import { Chat } from "./chat";
+import { comment } from "postcss";
 
 
 
@@ -19,8 +20,12 @@ export function ChatLayout({
   navCollapsedSize,
 }) {
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
-  const [selectedUser, setSelectedUser] = useState(UserData[0]);
+  const [selectedUser, setSelectedUser] = useState(UserData[1]);
   const [isMobile, setIsMobile] = useState(false);
+  function handleSelect(name){
+    const match = UserData.find(element => element.name == name)
+    setSelectedUser(match)
+  }
 
   useEffect(() => {
     const checkScreenWidth = () => {
@@ -29,7 +34,6 @@ export function ChatLayout({
 
     // Initial check
     checkScreenWidth();
-
     // Event listener for screen width changes
     window.addEventListener("resize", checkScreenWidth);
 
@@ -37,8 +41,21 @@ export function ChatLayout({
     return () => {
       window.removeEventListener("resize", checkScreenWidth);
     };
-  }, []);
+  }, [selectedUser]);
 
+// create a listener that looks fires when clicked on the name
+// use the name attribute to filter through the userData array to find the correct user selected
+// change the setSelectedUser to the new UserData index
+useEffect(()=>{
+ let elements = document.querySelectorAll('nav>a')
+ elements.forEach((tag)=>{
+  tag.addEventListener('click',(e)=>{
+    console.log(e.target)
+    
+  })
+ })
+}
+,[])
   return (
     <ResizablePanelGroup
       direction="horizontal"
@@ -81,6 +98,7 @@ export function ChatLayout({
             variant: selectedUser.name === user.name ? "secondary" : "ghost",
           }))}
           isMobile={isMobile}
+          onSelect={handleSelect}
         />
       </ResizablePanel>
       <ResizableHandle withHandle />

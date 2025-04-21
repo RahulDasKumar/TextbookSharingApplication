@@ -107,7 +107,21 @@ export const UserData = [
         id: 2,
         avater: "" ,
         name: "John Doe",
-        messages: [],
+        messages: [
+            {
+            id: 1,
+            avater: "",
+            name: "John Doe",
+            message: "Hey, Jakob",
+            timestamp: "10:00 AM",
+        },
+            {
+                id: 2,
+                avater: "",
+                name: "Jakob Hoeg",
+                message: "Hey!",
+                timestamp: "10:01 AM",
+            }],
     },
     {
         id: 3,

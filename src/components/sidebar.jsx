@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MoreHorizontal, SquarePen } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -11,10 +11,13 @@ import {
   TooltipProvider,
 } from "@/components/ui/tooltip";
 import { Avatar, AvatarImage } from "./ui/avatar";
+import { UserData } from "@/data";
+import useChatStore from "../components/ui/chat/hooks/useChatStore";
 
 
+export function Sidebar({ chats, isCollapsed, isMobile,onSelect }) {
+  
 
-export function Sidebar({ chats, isCollapsed, isMobile }) {
   return (
     <div
       data-collapsed={isCollapsed}
@@ -95,6 +98,7 @@ export function Sidebar({ chats, isCollapsed, isMobile }) {
                   "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white shrink",
                 "justify-start gap-4",
               )}
+              onClick={() => {onSelect(chat.name)}}
             >
               <Avatar className="flex justify-center items-center">
                 <AvatarImage
@@ -105,8 +109,8 @@ export function Sidebar({ chats, isCollapsed, isMobile }) {
                   className="w-10 h-10 "
                 />
               </Avatar>
-              <div className="flex flex-col max-w-28">
-                <span>{chat.name}</span>
+                <div className="flex flex-col max-w-28" >
+                <span >{chat.name}</span>
                 {chat.messages.length > 0 && (
                   <span className="text-zinc-300 text-xs truncate ">
                     {chat.messages[chat.messages.length - 1].name.split(" ")[0]}

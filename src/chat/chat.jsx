@@ -8,6 +8,15 @@ import ChatBottombar from "./chat-bottombar";
 
 
 export function Chat({ messages, selectedUser, isMobile }) {
+
+  const setSelectedUser = useChatStore((state) => state.setSelectedUser);
+
+  useEffect(() => {
+    if (selectedUser) {
+      setSelectedUser(selectedUser);
+    }
+  }, [selectedUser]);
+  
   const messagesState = useChatStore((state) => state.messages);
 
   const sendMessage = (newMessage) => {
@@ -16,6 +25,7 @@ export function Chat({ messages, selectedUser, isMobile }) {
     }));
   };
 
+  console.log(messagesState)
   return (
     <div className="flex flex-col justify-between w-full h-full">
       <ChatTopbar selectedUser={selectedUser} />
