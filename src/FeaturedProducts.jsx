@@ -67,7 +67,7 @@ export function FeaturedProducts() {
                                         />
                                         <div className="text-center mb-4">
                                             <h2 className="text-lg font-bold">{product.Name}</h2>
-                                            <p className="text-md font-semibold">${product.Price.toFixed(2)}</p>
+                                            <p className="text-md font-semibold">${Number(product.Price || 0).toFixed(2)}</p>
                                         </div>
                                         <div className="text-sm text-center text-gray-600">
                                             <p>{product.City}</p>

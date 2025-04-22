@@ -8,6 +8,8 @@ import SignUp from './SignUp'
 import Listings from './Listings' 
 import ProductDetail from './ProductDetail' 
 import Profile from './Profile'
+import ChatComponent from './Chat'
+
 import NewListingForm from "./NewListingForm";
 import CartLayout from "./CartLayout";
 import SettingsPage from './SettingsPage'
@@ -28,6 +30,7 @@ const routeDefinitions = createRoutesFromElements(
     {/* Auth routes without CartLayout */}
     <Route path="/login" element={<Login />} />
     <Route path="/signup" element={<SignUp />} />
+    <Route path='/chat' element={<ChatComponent/>}/>
   </Route>
 );
 
