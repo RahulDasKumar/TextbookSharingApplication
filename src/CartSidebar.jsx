@@ -3,7 +3,7 @@ import { useCart } from "@/context/CartContext";
 export function CartSidebar() {
     const { cartItems, removeFromCart, isCartOpen, setIsCartOpen } = useCart();
 
-    const total = cartItems.reduce((sum, item) => sum + Number(item.Price), 0);
+    const total = cartItems.reduce((sum, item) => sum + Number(item.price || 0), 0);
 
     return (
         <div className={`fixed top-0 right-0 h-full w-80 bg-white border-l border-gray-300 shadow-lg transform transition-transform duration-300 z-50 ${isCartOpen ? "translate-x-0" : "translate-x-full"}`}>
@@ -16,11 +16,11 @@ export function CartSidebar() {
                 {cartItems.length === 0 && <p className="text-gray-500">No items in cart.</p>}
                 {cartItems.map((item, i) => (
                     <div key={i} className="border p-3 rounded">
-                        <p className="font-semibold">{item.Name}</p>
-                        <p className="text-sm">{item.Category}</p>
+                        <p className="font-semibold">{item.title}</p>
+                        <p className="text-sm">Qty: {item.quantity}</p>
                         <div className="flex justify-between mt-2">
-                            <span>${Number(item.Price).toFixed(2)}</span>
-                            <button onClick={() => removeFromCart(i)} className="text-sm text-red-600">Remove</button>
+                            <span>${Number(item.price).toFixed(2)}</span>
+                            <button onClick={() => removeFromCart(item.listing_id)} className="text-sm text-red-600">Remove</button>
                         </div>
                     </div>
                 ))}
