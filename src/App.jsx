@@ -12,6 +12,7 @@ import ChatComponent from './Chat'
 
 import NewListingForm from "./NewListingForm";
 import CartLayout from "./CartLayout";
+import SettingsPage from './SettingsPage'
 
 
 
@@ -24,6 +25,7 @@ const routeDefinitions = createRoutesFromElements(
     <Route path="/product/:id" element={<CartLayout><ProductDetail /></CartLayout>} />
     <Route path="/profile" element={<CartLayout><Profile /></CartLayout>} />
     <Route path="/listings/new" element={<CartLayout><NewListingForm /></CartLayout>} />
+    <Route path="/settings" element={<SettingsPage />} />
 
     {/* Auth routes without CartLayout */}
     <Route path="/login" element={<Login />} />
