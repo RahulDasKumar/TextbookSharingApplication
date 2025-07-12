@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { useCart } from "@/context/CartContext";
 import placeholderImage from '/images/Book Cover.png'
-
+import link from "./server";
 export function ProductDetailPage() {
     const { id } = useParams()
     const navigate = useNavigate()
     const [product, setProduct] = useState(null)
-    const { addToCart } = useCart();
+    const { addToCart,rentBook } = useCart();
 
     useEffect(() => {
-        fetch("https://four155-project-pyflask.onrender.com/api/listings")
+        fetch(`${link}/api/listings`)
             .then(res => res.json())
             .then(data => {
                 const found = data.find(p => p._id === id)
@@ -30,7 +30,7 @@ export function ProductDetailPage() {
         if (!confirm) return
 
         try {
-            const response = await fetch(`https://four155-project-pyflask.onrender.com/api/listings/${id}`, {
+            const response = await fetch(`${link}/api/listings/${id}`, {
                 method: "DELETE",
             })
 
@@ -66,7 +66,7 @@ export function ProductDetailPage() {
                     <p className="text-gray-700 mb-1">City: <span className="font-medium">{product.City}</span></p>
                     <p className="italic text-gray-600 mb-6">Category: {product.Category}</p>
                     <p className="text-sm text-gray-400 mb-6">Product ID: {product._id}</p>
-
+                    <div className="flex flex-row">
                     {/* Delete Button */}
                     <button
                         onClick={handleDelete}
@@ -76,10 +76,17 @@ export function ProductDetailPage() {
                     </button>
                     <button
                         onClick={() => addToCart(product)}
-                        className="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition w-fit"
+                        className="m-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition w-fit"
                     >
+                    <button>
+                        
+                    </button>
                         Add to Cart
                     </button>
+                        <button className="m-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition w-fit" onClick={() => rentBook(product)} >
+                        Rent
+                    </button>
+                    </div>
                 </div>
             </div>
         </div>

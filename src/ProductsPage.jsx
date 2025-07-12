@@ -9,19 +9,25 @@ import {
     TableHeader,
     TableRow,
 } from "./components/ui/table";
+import link from "./server";
+
+import { useCart } from "@/context/CartContext";
+import { useToast } from "@/components/ToastContext"
 
 export function ProductsPage() {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [sortConfig, setSortConfig] = useState({ key: 'itemLabel', direction: 'asc' });
-
+    const { rentBook } = useCart();
+    const { showToast } = useToast();
+    
     // Pagination
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 100;
 
     useEffect(() => {
-        fetch('https://four155-project-pyflask.onrender.com/api/books')
+        fetch(`${link}/api/books`)
             .then(response => response.json())
             .then(data => {
                 setBooks(data);
@@ -72,7 +78,6 @@ export function ProductsPage() {
                         Subject
                         {sortConfig.key === 'mainSubjectLabel' ? (sortConfig.direction === 'asc' ? ' ↑' : ' ↓') : ' ⇵'}
                     </TableHead>
-                    <TableHead className="w-1/3 px-4 py-3 font-semibold">Link</TableHead>
                     </TableRow>
                 </TableHeader>
 
@@ -81,18 +86,16 @@ export function ProductsPage() {
                     <TableRow
                         key={book._id}
                         className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 transition duration-150`}
+                            onClick={() =>{
+                                rentBook({ "Name": book.itemLabel})
+                                showToast(`Rented ${book.itemLabel}!`, "success");
+                            
+                            }}
                     >
                         <TableCell className="px-4 py-3 font-medium truncate max-w-[250px]">
                         {book.itemLabel || "No Title"}
                         </TableCell>
                         <TableCell className="px-4 py-3">{book.mainSubjectLabel || "N/A"}</TableCell>
-                        <TableCell className="px-4 py-3">
-                        {book.item ? (
-                            <a href={book.item} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                            Wikidata
-                            </a>
-                        ) : "—"}
-                        </TableCell>
                     </TableRow>
                     ))}
                 </TableBody>
@@ -124,7 +127,7 @@ export function ProductsPage() {
                                     className="px-3 py-1 border rounded disabled:opacity-50"
                                 >
                                     Next
-                                </button>
+                            </button>
                             </div>
                         </TableCell>
                     </TableRow>

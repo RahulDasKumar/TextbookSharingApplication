@@ -3,25 +3,25 @@ export const Users = [
         id: 1,
         avater: "" ,
         messages: [],
-        name: "Jane Doe",
+        name: "Computer Science",
     },
     {
         id: 2,
         avater: "" ,
         messages: [],
-        name: "John Doe",
+        name: "Anthropology",
     },
     {
         id: 3,
         avater: "" ,
         messages: [],
-        name: "Elizabeth Smith",
+        name: "Psycology",
     },
     {
         id: 4,
         avater: "" ,
         messages: [],
-        name: "John Smith",
+        name: "Chemical Engineering",
     },
     {
         id: 5,
@@ -39,7 +39,7 @@ export const UserData = [
             {
                 id: 1,
                 avater: "" ,
-                name: "Jane Doe",
+                name: "Test",
                 message: "Hey, Jakob",
                 timestamp: "10:00 AM",
             },
@@ -101,12 +101,12 @@ export const UserData = [
                 isLoading: true,
             },
         ],
-        name: "Jane Doe",
+        name: "Computer Science",
     },
     {
         id: 2,
         avater: "" ,
-        name: "John Doe",
+        name: "Chemical Engineering",
         messages: [
             {
             id: 1,
@@ -126,13 +126,13 @@ export const UserData = [
     {
         id: 3,
         avater: "" ,
-        name: "Elizabeth Smith",
+        name: "Psycology",
         messages: [],
     },
     {
         id: 4,
         avater: "" ,
-        name: "John Smith",
+        name: "Marine Science",
         messages: [],
     },
 ];

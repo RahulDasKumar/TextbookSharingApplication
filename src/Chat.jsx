@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { ChatLayout } from "./chat/chat-layout";
+import Navbar from "./Navbar"
 
 function ChatComponent() {
     const [defaultLayout, setDefaultLayout] = useState();
@@ -16,11 +17,13 @@ function ChatComponent() {
         }
     }, []);
 
-    return (
+    return <>
+
         <div className="h-dvh">
+            <Navbar/>
             <ChatLayout defaultLayout={defaultLayout} navCollapsedSize={8} />
         </div>
-    );
+        </>
 }
 
 export default ChatComponent;

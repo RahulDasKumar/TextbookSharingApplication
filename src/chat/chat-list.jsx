@@ -21,7 +21,7 @@ import { Forward, Heart } from "lucide-react";
 
 
 const getMessageVariant = (messageName, selectedUserName) =>
-  messageName !== selectedUserName ? "sent" : "received";
+  messageName !== selectedUserName ? "received" : "sent";
 
 export function ChatList({
   messages,
@@ -34,13 +34,14 @@ export function ChatList({
     { icon: Forward, type: "Like" },
     { icon: Heart, type: "Share" },
   ];
-
+  const user = JSON.parse(localStorage.getItem('user'))
   return (
     <div className="w-full overflow-y-hidden h-full flex flex-col">
       <ChatMessageList>
         <AnimatePresence>
           {messages.map((message, index) => {
-            const variant = getMessageVariant(message.name, selectedUser.name);
+            const variant = getMessageVariant(message.name, user.username);
+            console.log(variant, message, user.name)
             return (
               <motion.div
                 key={index}
@@ -60,7 +61,7 @@ export function ChatList({
                 className="flex flex-col gap-2 p-4"
               >
                 {/* Usage of ChatBubble component */}
-                <ChatBubble variant={variant}>
+                <ChatBubble variant={variant} >
                   <ChatBubbleAvatar src={message.avatar} />
                   <ChatBubbleMessage isLoading={message.isLoading}>
                     {message.message}

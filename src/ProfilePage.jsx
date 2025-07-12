@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import defaultAvatar from "/images/default-avatar.png"
+import { RentCalendar } from "./RentCalendar"
 import settingsIcon from "/images/settings.png"
 
 export default function ProfilePage() {
@@ -56,6 +57,8 @@ export default function ProfilePage() {
                                 disabled
                             />
                         </div>
+                    
+                    </div>
                         <button type="submit" className="w-full bg-black text-white py-2 rounded hover:bg-gray-900" disabled>
                             Save
                         </button>
@@ -69,6 +72,7 @@ export default function ProfilePage() {
                     <div className="border p-3 rounded">You received a message from <strong>Sarah (Buyer)</strong></div>
                     <div className="border p-3 rounded">You updated <strong>*Discrete Math Book*</strong> listing</div>
                 </div>
+                <RentCalendar></RentCalendar>
             </div>
         </div>
     )

@@ -16,35 +16,64 @@ import { loggedInUserData } from "../data";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import { ChatInput } from "../components/ui/chat/chat-input";
 import useChatStore from "@/components/ui/chat/hooks/useChatStore";
-
-
+import { io } from 'socket.io-client';
+import { socket } from "./socket";
 
 export const BottombarIcons = [{ icon: FileImage }, { icon: Paperclip }];
 
-export default function ChatBottombar({ isMobile }) {
+export default function ChatBottombar({ isMobile,selectedUser }) {
   const [message, setMessage] = useState("");
   const inputRef = useRef(null);
+
   const setMessages = useChatStore((state) => state.setMessages);
   const hasInitialResponse = useChatStore((state) => state.hasInitialResponse);
+  const user = JSON.parse(localStorage.getItem("user"))
+
   const setHasInitialResponse = useChatStore(
     (state) => state.setHasInitialResponse,
   );
   const [isLoading, setisLoading] = useState(false);
+  useEffect(() => {
+      // register events 
+    socket.on('connect', () => {
+      console.log('Successfully connected to the server!');
+    });
+    // 
+    socket.on('send_message',(msg)=>{
+        console.log(msg)
+      useChatStore.setState((state) => ({
+        messages: [...state.messages, msg.message],
+      }));
+      })
+  
+      return ()=>{
+        socket.off("send_message")
+        socket.off("join")
+      }
+  
+    }, [])
+  
 
   const handleInputChange = (event) => {
     setMessage(event.target.value);
   };
+  // sending message in 
 
-  const sendMessage = (newMessage) => {
-    useChatStore.setState((state) => ({
-      messages: [...state.messages, newMessage],
-    }));
+  const sendMessage =  (newMessage) => {
+    console.log("Socket connected:", socket.connected);    
+
+    socket.emit("send_message", {
+      room: selectedUser.name,
+      message: newMessage,
+      name: user['username']
+    }, (response) => {
+      console.log("Server Response:", response); 
+    });
   };
-
   const handleThumbsUp = () => {
     const newMessage = {
       id: message.length + 1,
-      name: loggedInUserData.name,
+      name: user['username'],
       avatar: loggedInUserData.avatar,
       message: "👍",
     };
@@ -53,13 +82,15 @@ export default function ChatBottombar({ isMobile }) {
   };
 
   const handleSend = () => {
+    console.log(message)
     if (message.trim()) {
       const newMessage = {
         id: message.length + 1,
-        name: loggedInUserData.name,
+        name: user['username'],
         avatar: loggedInUserData.avatar,
         message: message.trim(),
       };
+      console.log(newMessage)
       sendMessage(newMessage);
       setMessage("");
 
@@ -237,7 +268,7 @@ export default function ChatBottombar({ isMobile }) {
         ) : (
           <Button
             className="h-9 w-9 shrink-0"
-            onClick={handleThumbsUp}
+            // onClick={handleThumbsUp}
             disabled={isLoading}
             variant="ghost"
             size="icon"

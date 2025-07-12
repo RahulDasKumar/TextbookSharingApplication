@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { Sidebar } from "../components/sidebar";
 import { Chat } from "./chat";
 import { comment } from "postcss";
-
+import { socket } from "./socket";
 
 
 export function ChatLayout({
@@ -26,6 +26,7 @@ export function ChatLayout({
     const match = UserData.find(element => element.name == name)
     setSelectedUser(match)
   }
+  const storedUser = localStorage.getItem("user")
 
   useEffect(() => {
     const checkScreenWidth = () => {
@@ -43,19 +44,30 @@ export function ChatLayout({
     };
   }, [selectedUser]);
 
+    useEffect(() => {
+      // 
+      if (selectedUser) {
+        // leave the room
+        let user = JSON.parse(storedUser)
+        socket.emit('leave',{
+          room: selectedUser.name,
+          username: user['username'],
+        })
+        // change the name of room
+        setSelectedUser(selectedUser);
+        // change the room in socket io
+          socket.emit('join', {
+            room: selectedUser.name,
+            username: user['username']
+            })
+        
+      }
+    }, [selectedUser]);
+
 // create a listener that looks fires when clicked on the name
 // use the name attribute to filter through the userData array to find the correct user selected
 // change the setSelectedUser to the new UserData index
-useEffect(()=>{
- let elements = document.querySelectorAll('nav>a')
- elements.forEach((tag)=>{
-  tag.addEventListener('click',(e)=>{
-    console.log(e.target)
-    
-  })
- })
-}
-,[])
+
   return (
     <ResizablePanelGroup
       direction="horizontal"
