@@ -1,7 +1,8 @@
 import { useCart } from "@/context/CartContext";
+import { Button } from "./components/ui/button";
 
 export function CartSidebar() {
-    const { cartItems, removeFromCart, isCartOpen, setIsCartOpen } = useCart();
+    const { cartItems, removeFromCart, isCartOpen, setIsCartOpen, removeAllFromCart } = useCart();
 
     const total = cartItems.reduce((sum, item) => sum + Number(item.Price), 0);
 
@@ -25,7 +26,9 @@ export function CartSidebar() {
                     </div>
                 ))}
             </div>
-
+            {cartItems.length > 0 && (
+                <Button className="ml-[45%]" onClick={() => removeAllFromCart()}>Purchase</Button>
+            )}
             {cartItems.length > 0 && (
                 <div className="p-4 border-t font-semibold">
                     Total: ${total.toFixed(2)}

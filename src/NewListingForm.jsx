@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import link from "./server";
 export default function NewListingForm() {
     const [form, setForm] = useState({
         Name: "",
@@ -19,7 +19,7 @@ export default function NewListingForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch("https://four155-project-pyflask.onrender.com/api/listings", {
+            const res = await fetch(`${link}/api/listings`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

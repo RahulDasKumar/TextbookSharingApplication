@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import defaultAvatar from "/images/default-avatar.png"
-
+import { RentCalendar } from "./RentCalendar"
 export default function ProfilePage() {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
@@ -116,9 +116,10 @@ export default function ProfilePage() {
                                 This will permanently remove your account and data.
                             </p>
                         </div>
-
+                    
                     </div>
                 </div>
+                <RentCalendar></RentCalendar>
             </div>
         </div>
     )

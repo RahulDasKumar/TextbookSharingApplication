@@ -9,12 +9,12 @@ import {
     CarouselPrevious,
 } from "./components/ui/carouseltextbook"
 import placeholderImage from "/images/Book Cover.png"
-
+import link from "./server"
 export function FeaturedProducts() {
     const [listings, setListings] = useState([])
 
     useEffect(() => {
-        fetch("https://four155-project-pyflask.onrender.com/api/listings")
+        fetch(`${link}/api/listings`)
             .then((res) => res.json())
             .then((data) => {
                 const shuffled = [...data].sort(() => 0.5 - Math.random())

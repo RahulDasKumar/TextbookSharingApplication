@@ -4,15 +4,11 @@ import {
   Users,
 } from "../../../../data";
 import { create } from "zustand";
-
-
-
-
+import { socket } from "@/chat/socket";
 
 const useChatStore = create()((set) => ({
   selectedUser: Users[4],
   selectedExample: { name: "Messenger example", url: "/" },
-
   examples: [
     { name: "Messenger example", url: "/" },
     { name: "Chatbot example", url: "/chatbot" },
@@ -35,10 +31,12 @@ const useChatStore = create()((set) => ({
     set(({ chatBotMessages }) => ({ chatBotMessages: fn(chatBotMessages) })),
 
   setSelectedUser: (selectedUser) => set({ selectedUser, messages: selectedUser.messages }),
-
+  
   
   messages: UserData[1].messages,
-  setMessages: (fn) => set(({ messages }) => ({ messages: fn(messages) })),
+  setMessages: (fn) => {
+    set(({ messages }) => ({ messages: fn(messages) }))
+  },
 
   hasInitialAIResponse: false,
   setHasInitialAIResponse: (hasInitialAIResponse) =>

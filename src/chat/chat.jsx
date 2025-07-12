@@ -4,12 +4,17 @@ import { ChatList } from "./chat-list";
 import React, { useEffect, useState } from "react";
 import useChatStore from "../components/ui/chat/hooks/useChatStore";
 import ChatBottombar from "./chat-bottombar";
+import { socket } from "./socket";
 
 
 
 export function Chat({ messages, selectedUser, isMobile }) {
-
+  const storedUser = localStorage.getItem("user")
   const setSelectedUser = useChatStore((state) => state.setSelectedUser);
+  const [typingUsers, setTypingUsers] = useState([]);
+  const messagesState = useChatStore((state) => state.messages);
+
+
 
   useEffect(() => {
     if (selectedUser) {
@@ -17,13 +22,7 @@ export function Chat({ messages, selectedUser, isMobile }) {
     }
   }, [selectedUser]);
   
-  const messagesState = useChatStore((state) => state.messages);
-
-  const sendMessage = (newMessage) => {
-    useChatStore.setState((state) => ({
-      messages: [...state.messages, newMessage],
-    }));
-  };
+  
 
   console.log(messagesState)
   return (
@@ -33,11 +32,10 @@ export function Chat({ messages, selectedUser, isMobile }) {
       <ChatList
         messages={messagesState}
         selectedUser={selectedUser}
-        sendMessage={sendMessage}
         isMobile={isMobile}
       />
 
-      <ChatBottombar isMobile={isMobile} />
+      <ChatBottombar isMobile={isMobile} selectedUser={selectedUser} />
     </div>
   );
 }

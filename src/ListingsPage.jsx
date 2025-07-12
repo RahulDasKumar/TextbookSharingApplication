@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "./components/ui/card";
 import placeholderImage from "/images/Book Cover.png";
-
+import link from "./server";
 export function ListingsPage({ searchQuery = "" }) {
     const [products, setProducts] = useState([]);
     const [priceFilter, setPriceFilter] = useState("");
@@ -10,7 +10,7 @@ export function ListingsPage({ searchQuery = "" }) {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
     useEffect(() => {
-        fetch("https://four155-project-pyflask.onrender.com/api/listings")
+        fetch(`${link}/api/listings`)
             .then((res) => res.json())
             .then((data) => setProducts(data))
             .catch((err) => console.error("Error fetching listings:", err));

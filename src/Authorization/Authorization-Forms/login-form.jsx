@@ -19,7 +19,7 @@ import { useState } from "react";
 import {yupResolver} from "@hookform/resolvers/yup"
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ToastContext"
-
+import link from "@/server";
 
 export function LoginPage() {
     const [loading, setLoading] = useState(false);
@@ -37,7 +37,7 @@ export function LoginPage() {
     const onSubmit = async (data) => {
         setLoading(true);
         try {
-            const response = await fetch('https://four155-project-pyflask.onrender.com/api/auth/login', {
+            const response = await fetch(`${link}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

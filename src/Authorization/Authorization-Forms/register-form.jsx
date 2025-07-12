@@ -18,6 +18,7 @@ import { Button } from "../UI-Components/button";
 import { useFormStatus } from "react-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import link from "@/server";
 export const RegisterForm = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate(); 
@@ -34,7 +35,7 @@ export const RegisterForm = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('https://four155-project-pyflask.onrender.com/api/auth/signup', {
+            const response = await fetch(`${link}/api/auth/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

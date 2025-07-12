@@ -32,7 +32,7 @@ export default function Navbar() {
             <section className="w-full h-4/5 m-4 flex flex-row justify-between items-center px-8">
                 <Link to="/products"><p className="text-2xl">PRODUCTS</p></Link>
                 <Link to="/listings"><p className="text-2xl">UNCC BOOKS</p></Link>
-
+                <Link to="/chat"><p className="text-2xl">CHAT</p></Link>
                 {isLoggedIn ? (
                     <>
                         <Link to="/profile"><p className="text-2xl">PROFILE</p></Link>
